@@ -1,0 +1,31 @@
+@import './variables.module.scss';
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.formContainer input {
+    width: 250px;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    outline: 2px solid transparent;
+    transition: outline-color 0.4s ease-in-out;
+}
+
+.formContainer button {
+    width: fit-content;
+    margin: 25px auto;
+    margin-bottom: 0px;
+    padding: 10px 50px;
+    border-radius: 6px;
+
+    background-color: $corelab;
+    color: #fff;
+}
+
+.formContainer input:focus {
+    outline-color: $corelab;
+}
