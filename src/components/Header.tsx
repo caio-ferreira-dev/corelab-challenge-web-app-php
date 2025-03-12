@@ -3,10 +3,9 @@ import styles from '@/styles/header.module.scss'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-type HeaderProps = {
+interface HeaderProps {
     query: string
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    setQuery: Function
+    setQuery: (query: string) => void
 }
 
 export default function Header({ query, setQuery }: HeaderProps) {

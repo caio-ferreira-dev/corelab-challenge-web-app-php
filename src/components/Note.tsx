@@ -19,16 +19,18 @@ export default function Note({noteData}: NoteProps) {
     const deleteMutation = useDeleteMutation();
 
     useEffect(() => {
+        function refetchNotes() {
+            const { id, name, content, color, favorite } = note
+            updateMutation.mutateAsync({id, name, content, favorite, color })
+        }
+
         if (prevIsEditing.current === true && isEditing === false) {
             refetchNotes();
         }
         prevIsEditing.current = isEditing;
-    }, [isEditing])
+    }, [isEditing, note, updateMutation ])
 
-    function refetchNotes() {
-        const { id, name, content, color, favorite } = note
-        updateMutation.mutateAsync({id, name, content, favorite, color })
-    }
+    
 
     function handleTitleChange(e: ChangeEvent<HTMLInputElement>) {
         setNote({...note, name: e.target.value})
@@ -60,13 +62,13 @@ export default function Note({noteData}: NoteProps) {
     }
 
     async function setColor(color: string) {
-    
+        setNote({...note, color})
         const { id, name, content, favorite } = note
         updateMutation.mutateAsync({id, name, content, favorite, color })
     }
 
     return (
-        <div className={`${styles.noteContainer} ${styles[note.color]}`}>
+        <div className={`${styles.noteContainer} ${styles[`${note.color}`]}`}>
             <div className={styles.titleContainer}>
                 <input type="text" placeholder='Título' readOnly={!isEditing} value={note.name} onChange={handleTitleChange}/>
                 {note.favorite ? 

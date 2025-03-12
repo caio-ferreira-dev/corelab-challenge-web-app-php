@@ -17,7 +17,7 @@ export default function Dashboard() {
         if(!localStorage.getItem("authToken")) {
             router.push('/login')
         }
-    }, [])
+    }, [router])
 
     function renderList(listType: string) {
         if(!data) return

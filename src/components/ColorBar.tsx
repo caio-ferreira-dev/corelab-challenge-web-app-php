@@ -17,7 +17,7 @@ export default function ColorBar({ setColor, setState }: ColorBarProps) {
             }
         };
         document.addEventListener('mousedown', handleOutsideClick);
-    }, [])
+    }, [setState])
 
     function handleClick(color: string) {
         setColor(color)
