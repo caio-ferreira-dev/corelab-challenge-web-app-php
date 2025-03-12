@@ -1,4 +1,4 @@
-@import "./variables.module.scss";
+@use "variables.module.scss";
 
 .formContainer {
   display: flex;
@@ -22,10 +22,10 @@
   padding: 10px 50px;
   border-radius: 6px;
 
-  background-color: $corelab;
+  background-color: variables.$corelab;
   color: #fff;
 }
 
 .formContainer input:focus {
-  outline-color: $corelab;
+  outline-color: variables.$corelab;
 }

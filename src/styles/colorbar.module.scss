@@ -1,10 +1,10 @@
-@import "./variables.module.scss";
+@use "variables.module.scss";
 
 .colorBarContainer {
   position: absolute;
   top: 40px;
   left: 0;
-  background-color: $primary;
+  background-color: variables.$primary;
   width: 350px;
   height: 30px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
@@ -35,38 +35,38 @@
   }
 }
 .lightBlue {
-  background-color: $lightBlue;
+  background-color: variables.$lightBlue;
 }
 .green {
-  background-color: $green;
+  background-color: variables.$green;
 }
 .yellow {
-  background-color: $yellow;
+  background-color: variables.$yellow;
 }
 .pink {
-  background-color: $pink;
+  background-color: variables.$pink;
 }
 .red {
-  background-color: $red;
+  background-color: variables.$red;
 }
 .blue {
-  background-color: $blue;
+  background-color: variables.$blue;
 }
 .purple {
-  background-color: $purple;
+  background-color: variables.$purple;
 }
 .lime {
-  background-color: $lime;
+  background-color: variables.$lime;
 }
 .orange {
-  background-color: $orange;
+  background-color: variables.$orange;
 }
 .gray {
-  background-color: $gray;
+  background-color: variables.$gray;
 }
 .black {
-  background-color: $black;
+  background-color: variables.$black;
 }
 .brown {
-  background-color: $brown;
+  background-color: variables.$brown;
 }

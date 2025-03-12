@@ -1,6 +1,6 @@
-@import "./variables.module.scss";
-@import "./newNote.module.scss";
-@import "./colorbar.module.scss";
+@use "variables.module.scss";
+@use "newNote.module.scss";
+@use "colorbar.module.scss";
 
 .noteContainer {
   margin: 20px;
@@ -59,12 +59,12 @@
     background-color: transparent;
     width: 7px;
     height: 14px;
-    border: solid $subtitle;
+    border: solid variables.$subtitle;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
   }
-  background-color: $selected;
+  background-color: variables.$selected;
   margin-left: 20px;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .selectingColor {
-  background-color: $selected;
+  background-color: variables.$selected;
 }
 
 .colorButton {

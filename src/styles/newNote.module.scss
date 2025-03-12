@@ -1,4 +1,4 @@
-@import "./variables.module.scss";
+@use "variables.module.scss";
 
 .newNoteContainer {
   width: 500px;
@@ -7,7 +7,7 @@
   border-radius: 3px;
   border: 1px solid #d9d9d9;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25), -1px -1px 1px rgba(0, 0, 0, 0.15);
-  background-color: $primary;
+  background-color: variables.$primary;
   textarea {
     resize: none;
     height: auto;
@@ -36,7 +36,7 @@
   input {
     width: 80%;
     margin: 0 20px;
-    color: $note-title;
+    color: variables.$note-title;
     font-weight: bold;
   }
   img {
@@ -64,10 +64,10 @@
   }
 
   button {
-    background-color: $primary;
+    background-color: variables.$primary;
     width: 10px;
     height: 10px;
-    border: solid $subtitle;
+    border: solid variables.$subtitle;
     border-width: 0 2px 2px 0;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);

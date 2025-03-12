@@ -1,4 +1,4 @@
-@import "./variables.module.scss";
+@use "variables.module.scss";
 
 .mainContainer {
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 .imageSection {
-  background-color: $corelab;
+  background-color: variables.$corelab;
   display: flex;
   align-items: center;
   justify-content: center;

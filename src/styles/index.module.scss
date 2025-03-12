@@ -1,4 +1,4 @@
-@import "./variables.module.scss";
+@use "variables.module.scss";
 
 .mainContainer {
   display: flex;
@@ -7,13 +7,13 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: $secondary;
+  background-color: variables.$secondary;
   padding: 10vw;
 
   p {
     margin-top: 10px;
     a {
-      color: $corelab;
+      color: variables.$corelab;
     }
   }
 }
@@ -24,17 +24,17 @@
   gap: 10px;
 
   button {
-    background-color: $selected;
+    background-color: variables.$selected;
     transition: all;
     transition-duration: 0.5s;
-    color: $primary;
+    color: variables.$primary;
     padding: 8px 16px;
     border-radius: 4px;
     margin-top: 20px;
     width: 100px;
     font-weight: 600;
     &:hover {
-      background-color: $corelab;
+      background-color: variables.$corelab;
     }
   }
 }
