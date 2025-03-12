@@ -13,7 +13,8 @@ export default function RegisterForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!username || !password) return alert("Preencha os campos!");
-    if (password !== passwordConfirm) return alert("As senha não correspondem!")
+    if (password !== passwordConfirm)
+      return alert("As senha não correspondem!");
 
     await registerMutation.mutateAsync({ username, password });
     router.push("/login"); // Redireciona ao sucesso
@@ -48,7 +49,9 @@ export default function RegisterForm() {
       <button type="submit" disabled={registerMutation.isPending}>
         {registerMutation.isPending ? "Registrando..." : "Registrar"}
       </button>
-      {registerMutation.isError && <p style={{ color: "red" }}>Erro: {registerMutation.error.message}</p>}
+      {registerMutation.isError && (
+        <p style={{ color: "red" }}>Erro: {registerMutation.error.message}</p>
+      )}
     </form>
   );
 }

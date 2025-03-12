@@ -5,8 +5,8 @@ export function useNotesQuery() {
   return useQuery({
     queryKey: ["notesArray"],
     queryFn: () => {
-        return fetchNotes();
+      return fetchNotes();
     },
     retry: false,
   });
-};
+}

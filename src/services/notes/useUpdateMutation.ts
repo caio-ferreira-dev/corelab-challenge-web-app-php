@@ -26,6 +26,6 @@ export function useUpdateMutation() {
         exact: true,
       });
     },
-    retry: false
+    retry: false,
   });
 }

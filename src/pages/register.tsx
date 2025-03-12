@@ -30,8 +30,8 @@ export default function Register() {
           </svg>
         </section>
         <section className={styles.formSection}>
-            <h1>Cadastrar usuário</h1>
-            <RegisterForm />
+          <h1>Cadastrar usuário</h1>
+          <RegisterForm />
         </section>
       </main>
     </>

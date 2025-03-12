@@ -14,6 +14,6 @@ export function useDeleteMutation() {
         exact: true,
       });
     },
-    retry: false
+    retry: false,
   });
 }

@@ -1,46 +1,46 @@
-@import './variables.module.scss';
+@import "./variables.module.scss";
 
 .mainContainer {
-    display: flex;
-    width: 100%;
-    height: 100vh;
+  display: flex;
+  width: 100%;
+  height: 100vh;
 }
 
 .imageSection {
-    background-color: $corelab;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 65%;
-    height: 100%;
+  background-color: $corelab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  height: 100%;
 }
 
 .formSection {
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 @media only screen and (max-width: 767px) {
-    .imageSection {
-        width: 50%;
-    }
+  .imageSection {
+    width: 50%;
+  }
 
-    .formSection {
-        width: 50%;
-    }
+  .formSection {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 425px) {
-    .imageSection {
-        display: none;
-    }
+  .imageSection {
+    display: none;
+  }
 
-    .formSection {
-        width: 100%;
-    }
+  .formSection {
+    width: 100%;
+  }
 }

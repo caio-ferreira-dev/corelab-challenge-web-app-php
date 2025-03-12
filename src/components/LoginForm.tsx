@@ -13,7 +13,6 @@ export default function LoginForm() {
     e.preventDefault();
     if (!username || !password) return alert("Preencha os campos!");
 
-
     await loginMutation.mutateAsync({ username, password });
     router.push("/dashboard");
   }
@@ -40,7 +39,9 @@ export default function LoginForm() {
       <button type="submit" disabled={loginMutation.isPending}>
         {loginMutation.isPending ? "Entrando..." : "Login"}
       </button>
-      {loginMutation.isError && <p style={{ color: "red" }}>Erro: {loginMutation.error.message}</p>}
+      {loginMutation.isError && (
+        <p style={{ color: "red" }}>Erro: {loginMutation.error.message}</p>
+      )}
     </form>
   );
 }

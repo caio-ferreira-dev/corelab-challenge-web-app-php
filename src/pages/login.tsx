@@ -30,8 +30,8 @@ export default function Login() {
           </svg>
         </section>
         <section className={styles.formSection}>
-            <h1>Fazer Login</h1>
-            <LoginForm />
+          <h1>Fazer Login</h1>
+          <LoginForm />
         </section>
       </main>
     </>
