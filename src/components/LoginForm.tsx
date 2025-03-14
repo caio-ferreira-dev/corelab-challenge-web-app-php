@@ -40,7 +40,7 @@ export default function LoginForm() {
         {loginMutation.isPending ? "Entrando..." : "Login"}
       </button>
       {loginMutation.isError && (
-        <p style={{ color: "red" }}>Erro: {loginMutation.error.message}</p>
+        <p style={{ color: "red", margin: "0 auto" }}>Erro: {loginMutation.error.message}</p>
       )}
     </form>
   );

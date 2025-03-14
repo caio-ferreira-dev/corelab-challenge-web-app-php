@@ -1,3 +1,4 @@
+import { LoginErrorResponse } from "@/interfaces/ILoginError";
 import INote from "@/interfaces/INote";
 import axios from "axios";
 
@@ -9,14 +10,19 @@ export const axiosInstance = axios.create({
 });
 
 export async function fetchToken(username: string, password: string) {
-  const { data } = await axiosInstance.post("/login", {
-    username,
-    password,
-  });
-
-  localStorage.setItem("authToken", data.token);
-  localStorage.setItem("username", data.user.username);
-  return data.token;
+  try {
+    const { data } = await axiosInstance.post("/login", {
+      username,
+      password,
+    });
+  
+    localStorage.setItem("authToken", data.token);
+    localStorage.setItem("username", data.user.username);
+    return data.token;
+  } catch (error: unknown) {
+    throw handleAxiosError(error)
+  }
+  
 }
 
 export async function registerUser(username: string, password: string) {
@@ -88,4 +94,11 @@ export async function deleteNote(id: number) {
   });
 
   return data;
+}
+
+function handleAxiosError(error: unknown): Error {
+  if (axios.isAxiosError<LoginErrorResponse>(error)) {
+    return new Error(error.response?.data?.error || "Erro inesperado.");
+  }
+  return new Error("Erro desconhecido.");
 }
