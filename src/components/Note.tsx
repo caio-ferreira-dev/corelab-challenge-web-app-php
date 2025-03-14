@@ -19,6 +19,10 @@ export default function Note({ noteData }: NoteProps) {
   const deleteMutation = useDeleteMutation();
 
   useEffect(() => {
+    setNote(noteData);
+  }, [noteData]);
+
+  useEffect(() => {
     function refetchNotes() {
       const { id, name, content, color, favorite } = note;
       updateMutation.mutateAsync({ id, name, content, favorite, color });

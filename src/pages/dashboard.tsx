@@ -19,22 +19,22 @@ export default function Dashboard() {
     }
   }, [router]);
 
-  function renderList(listType: string) {
-    if (!data) return;
+  function renderList(listType: string, dataArray: INote[] | undefined) {
+    if (!dataArray) return;
     const renderSearch = query.length >= 1 ? true : false;
     const favoriteFilter =
-      data.filter((note) => note.favorite).length >= 1 ? true : false;
+      dataArray.filter((note) => note.favorite).length >= 1 ? true : false;
     const otherFilter =
-      data.filter((note) => !note.favorite).length >= 1 ? true : false;
+      dataArray.filter((note) => !note.favorite).length >= 1 ? true : false;
     const renderFavorite = renderSearch
-      ? data.filter(
+      ? dataArray.filter(
           (note) =>
             note.name.toLowerCase().includes(query.toLowerCase()) &&
             note.favorite
         ).length >= 1
       : favoriteFilter;
     const renderOther = renderSearch
-      ? data.filter(
+      ? dataArray.filter(
           (note) =>
             note.name.toLowerCase().includes(query.toLowerCase()) &&
             !note.favorite
@@ -60,7 +60,7 @@ export default function Dashboard() {
       >
         <div>{render ? <h2>{listType}</h2> : ""}</div>
         <div className={styles.notesList}>
-          {data.map((note: INote, key: number) => {
+          {dataArray.map((note: INote, key: number) => {
             const noteName = note.name.toLocaleLowerCase();
             if (renderSearch) {
               if (noteName.includes(query.toLocaleLowerCase())) {
@@ -94,8 +94,8 @@ export default function Dashboard() {
         <Header query={query} setQuery={setQuery} />
         <div className={styles.contentContainer}>
           <NewNote />
-          {renderList("Favoritas")}
-          {renderList("Outras")}
+          {renderList("Favoritas", data)}
+          {renderList("Outras", data)}
         </div>
       </div>
     </>
