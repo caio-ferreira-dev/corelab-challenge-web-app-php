@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { fetchToken } from "@/lib/axios";
+import { logUser } from "@/lib/axios/loginUser";
 
 export function useLoginMutation() {
   return useMutation({
@@ -9,7 +9,7 @@ export function useLoginMutation() {
     }: {
       username: string;
       password: string;
-    }) => fetchToken(username, password),
+    }) => logUser(username, password),
     retry: false,
   });
 }

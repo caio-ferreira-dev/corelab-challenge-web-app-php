@@ -1,5 +1,5 @@
+import { registerUser } from "@/lib/axios/registerUser";
 import { useMutation } from "@tanstack/react-query";
-import { registerUser } from "@/lib/axios";
 
 export function useRegisterMutation() {
   return useMutation({

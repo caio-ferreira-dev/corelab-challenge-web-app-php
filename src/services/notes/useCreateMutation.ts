@@ -1,4 +1,5 @@
-import { createNote } from "@/lib/axios";
+
+import { createNote } from "@/lib/axios/createNote";
 import { queryClient } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 

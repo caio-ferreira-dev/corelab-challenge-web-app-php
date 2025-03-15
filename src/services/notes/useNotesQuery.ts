@@ -1,11 +1,11 @@
-import { fetchNotes } from "@/lib/axios";
+import { getNotes } from "@/lib/axios/getNotes";
 import { useQuery } from "@tanstack/react-query";
 
 export function useNotesQuery() {
   return useQuery({
     queryKey: ["notesArray"],
     queryFn: () => {
-      return fetchNotes();
+      return getNotes();
     },
     retry: false,
   });

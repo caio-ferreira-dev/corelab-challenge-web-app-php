@@ -1,4 +1,4 @@
-import { deleteNote } from "@/lib/axios";
+import { deleteNote } from "@/lib/axios/deleteNote";
 import { queryClient } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 
