@@ -1,0 +1,62 @@
+@use "variables.module.scss";
+@use "notesColors.module.scss";
+
+.colorFilterSection {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 64px;
+}
+
+.colorFilterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  height: 64px;
+
+  padding: 0px 16px;
+
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25), -1px -1px 1px rgba(0, 0, 0, 0.15);
+  background-color: variables.$primary;
+}
+
+.colorSelector {
+  position: relative;
+  display: flex;
+  gap: 12px;
+
+  div {
+    display: flex;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 10px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .colorFilterSection {
+    position: relative;
+    width: 400px;
+    border-radius: 25px;
+    max-width: 90vw;
+  }
+
+  .colorSelector {
+    position: unset
+  }
+
+  .colorFilterContainer {
+    width: 200px;
+    border-radius: 25px;
+    max-width: 90vw;
+  }
+
+  .selectedColor {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+  }
+}

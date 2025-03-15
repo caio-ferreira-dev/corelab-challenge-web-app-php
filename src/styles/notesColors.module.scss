@@ -1,0 +1,43 @@
+@use "variables.module.scss";
+
+.lightBlue {
+  background-color: variables.$lightBlue;
+}
+.green {
+  background-color: variables.$green;
+}
+.yellow {
+  background-color: variables.$yellow;
+}
+.pink {
+  background-color: variables.$pink;
+}
+.red {
+  background-color: variables.$red;
+}
+.blue {
+  background-color: variables.$blue;
+}
+.purple {
+  background-color: variables.$purple;
+}
+.lime {
+  background-color: variables.$lime;
+}
+.orange {
+  background-color: variables.$orange;
+}
+.gray {
+  background-color: variables.$gray;
+}
+.black {
+  background-color: variables.$black;
+}
+.brown {
+  background-color: variables.$brown;
+}
+
+.whiteSelector {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='9.5' fill='white' stroke='%23C1C1C1'/%3E%3Cline x1='2.37057' y1='16.5135' x2='16.5135' y2='2.37064' stroke='%23FF8383'/%3E%3C/svg%3E");
+  background-size: cover;
+}

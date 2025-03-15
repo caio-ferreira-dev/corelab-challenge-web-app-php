@@ -7,11 +7,13 @@ import NewNote from "@/components/NewNote";
 import Header from "@/components/Header";
 import Note from "@/components/Note";
 import INote from "@/interfaces/INote";
+import ColorFilter from "@/components/ColorFilter";
 
 export default function Dashboard() {
   const router = useRouter();
   const { data } = useNotesQuery();
   const [query, setQuery] = useState("");
+  const [colorSelected, setColorSelected] = useState("white");
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
@@ -22,31 +24,35 @@ export default function Dashboard() {
   function renderList(listType: string, dataArray: INote[] | undefined) {
     if (!dataArray) return;
     const renderSearch = query.length >= 1 ? true : false;
-    const favoriteFilter =
-      dataArray.filter((note) => note.favorite).length >= 1 ? true : false;
-    const otherFilter =
-      dataArray.filter((note) => !note.favorite).length >= 1 ? true : false;
-    const renderFavorite = renderSearch
-      ? dataArray.filter(
-          (note) =>
-            note.name.toLowerCase().includes(query.toLowerCase()) &&
-            note.favorite
-        ).length >= 1
-      : favoriteFilter;
-    const renderOther = renderSearch
-      ? dataArray.filter(
-          (note) =>
-            note.name.toLowerCase().includes(query.toLowerCase()) &&
-            !note.favorite
-        ).length >= 1
-      : otherFilter;
-
-    const render =
-      listType === "Favoritas"
-        ? renderFavorite
-        : listType === "Outras"
-        ? renderOther
-        : "";
+    const filterByColor = colorSelected.length >= 1 ? true : false;
+    
+    const renderedElements = dataArray.map((note: INote, key: number) => {
+      if (
+        filterByColor &&
+        note.color !== colorSelected &&
+        colorSelected !== "white"
+      ) {
+        return;
+      }
+      const noteName = note.name.toLocaleLowerCase();
+      if (renderSearch) {
+        if (noteName.includes(query.toLocaleLowerCase())) {
+          if (note.favorite && listType === "Favoritas") {
+            return <Note noteData={note} key={key} />;
+          }
+          if (!note.favorite && listType === "Outras") {
+            return <Note noteData={note} key={key} />;
+          }
+        }
+        return;
+      }
+      if (note.favorite && listType === "Favoritas") {
+        return <Note noteData={note} key={key} />;
+      }
+      if (!note.favorite && listType === "Outras") {
+        return <Note noteData={note} key={key} />;
+      }
+    });
 
     return (
       <div
@@ -58,28 +64,13 @@ export default function Dashboard() {
             : ""
         }`}
       >
-        <div>{render ? <h2>{listType}</h2> : ""}</div>
+        <div><h2>{listType}</h2></div>
         <div className={styles.notesList}>
-          {dataArray.map((note: INote, key: number) => {
-            const noteName = note.name.toLocaleLowerCase();
-            if (renderSearch) {
-              if (noteName.includes(query.toLocaleLowerCase())) {
-                if (note.favorite && listType === "Favoritas") {
-                  return <Note noteData={note} key={key} />;
-                }
-                if (!note.favorite && listType === "Outras") {
-                  return <Note noteData={note} key={key} />;
-                }
-              }
-              return;
-            }
-            if (note.favorite && listType === "Favoritas") {
-              return <Note noteData={note} key={key} />;
-            }
-            if (!note.favorite && listType === "Outras") {
-              return <Note noteData={note} key={key} />;
-            }
-          })}
+          {renderedElements.filter(Boolean).length > 0 ? (
+            renderedElements.filter(Boolean)
+          ) : (
+            <p className={styles.queryResult}>Nenhuma nota encontrada</p>
+          )}
         </div>
       </div>
     );
@@ -94,6 +85,10 @@ export default function Dashboard() {
         <Header query={query} setQuery={setQuery} />
         <div className={styles.contentContainer}>
           <NewNote />
+          <ColorFilter
+            color={colorSelected}
+            setFilteredColor={setColorSelected}
+          />
           {renderList("Favoritas", data)}
           {renderList("Outras", data)}
         </div>

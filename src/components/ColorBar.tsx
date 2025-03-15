@@ -30,6 +30,13 @@ export default function ColorBar({ setColor, setState }: ColorBarProps) {
   return (
     <div className={styles.colorBarContainer} ref={containerRef}>
       <button
+        className={styles.whiteSelector}
+        onClick={() => {
+          handleClick("white");
+        }}
+      >
+      </button>
+      <button
         className={styles.lightBlue}
         onClick={() => {
           handleClick("lightBlue");
